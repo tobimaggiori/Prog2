@@ -1,0 +1,13 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-intermediate-reader.ss" "lang")((modname P1-Ej1-Guimpel) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+; generar_lista : Natural Natural -> List(Natural)
+; Recibe un x natural y un n natural, devuelve una
+; lista con los primeros n naturales pares posteriores a x.
+(check-expect (generar_lista 0 25) (list 0 2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48))
+
+(define (generar_lista x n)
+  (cond
+    [(zero? n) '()]
+    [(even? x) (cons x (generar_lista (add1 x) (sub1 n)))]
+    [else (generar_lista (add1 x) n)]))
