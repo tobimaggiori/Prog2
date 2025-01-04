@@ -22,13 +22,13 @@
 ;
 ; sumar_primeros : Natural -> Natural
 ; Dado un n natural, devuelve la suma de
-; los primeros n naturales.
-   (check-expect (sumar_primeros 50) 1275)
+; los primeros n naturales (considerando al 0).
+   (check-expect (sumar_primeros 50) 1225)
 
 (define (sumar_primeros n)
   (cond
-    [(zero? n) n]
-    [else (+ n (sumar_primeros (sub1 n)))]))
+    [(= n 1) 0]
+    [else (+ (sub1 n) (sumar_primeros (sub1 n)))]))
 ; ___________________________________________________
 ; Ejercicio 6:
 ;
@@ -47,7 +47,6 @@
     [else (+ (sub1 m) (sumar_entre n (sub1 m)))]))
 ; ___________________________________________________
 ; Ejercicio 7:
-;
 ; duplicar : String -> String
 ; Dado un String devuelve el resultado
 ; de concatenarlo consigo mismo.
@@ -59,7 +58,7 @@
 ; ___________________________________________________
 ; Ejercicio 8:
 ; duplicar_veces : String Natural -> List(String)
-; Dado un String y un numero n devuelve el una lista
+; Dado un String y un numero n devuelve una lista
 ; de n strings s. Ejemplo:
    (check-expect (duplicar_veces "Tobias" 3) (list "Tobias" "Tobias" "Tobias"))
 
@@ -68,9 +67,39 @@
     [(= n 0) '()]
     [else (cons s (duplicar_veces s (sub1 n)))]))
 
+; concatenar_lista : List(String) -> String
+; Dada una lista de Strings devuelve el resultado de
+; concatenar todos los Strings. Ejemplo:
    (check-expect (concatenar_lista (list "Tobias" "Tobias" "Tobias")) "TobiasTobiasTobias")
 (define (concatenar_lista l)
   (cond
     [(empty? l) ""]
     [else (string-append (first l) (concatenar_lista (rest l)))]))
+; __________________________________________________
+; Ejercicio 9:
+; suma : Number Number -> Number
+; Dados dos numeros devuelve la suma de ellos.
+; Ejemplo:
+   (check-expect (suma 5 5) 10)
+(define (suma a b) (+ a b))
+
+; resta : Number Number -> Number
+; Dados dos numeros devuelve la resta de ellos.
+; Ejemplo:
+   (check-expect (resta 5 5) 0)
+(define (resta a b) (- a b))
+
+; multiplica : Number Number -> Number
+; Dados dos numeros devuelve el producto de ellos.
+; Ejemplo:
+   (check-expect (multiplica 5 5) 25)
+(define (multiplica a b) (* a b))
+
+; divide : Number Number -> Number | String
+; Dados dos numeros a y b devuelve la division de a por b.
+; Si b = 0, devuelve Math ERROR. Ejemplo:
+   (check-expect (divide 10 2) 5)
+   (check-expect (divide 10 0) "Math ERROR")
+(define (divide a b) (if (zero? b) "Math ERROR" (/ a b)))
+
 

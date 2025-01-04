@@ -1,4 +1,5 @@
-# Ejs 1, 2 y 3. 
+# ___________________________________________________________________
+#  Ejercicio 1 = Ejercicio 2 = Ejercicio 3:
 def imprimir_pares(n, actual=0):
     """
     imprimir_pares : Natural Natural -> None
@@ -13,3 +14,17 @@ def imprimir_pares(n, actual=0):
 
 # Llamar a la función para imprimir los primeros 25 números pares
 imprimir_pares(25, 10)
+
+# ___________________________________________________________________
+#  Ejercicio 1 = Ejercicio 2 = Ejercicio 3:
+def sumar_primeros(n, suma=0):
+    """
+    sumar_primeros : Natural -> None
+    Dado un numero natural n, imprime la suma de
+    los primeros n naturales (Considerando el 0).
+    """
+    if n==1:
+        print(suma)
+    else:
+        suma = suma + (n-1)
+        sumar_primeros(n-1, suma)
