@@ -35,10 +35,5 @@ def main():
     if seguir == 'si':
         main()
             
-
-
-        
-        
-
 if __name__ == '__main__':
     main()
